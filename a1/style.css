@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  padding: 16px;
+  font-family: sans-serif;
+}
+
+.navbar-primary {
+  background-color: #007bff;
+}
+
+.navbar-item {
+  padding-right: 8px;
+}
