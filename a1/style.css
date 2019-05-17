@@ -1,3 +1,7 @@
+body {
+  background: #ffffff;
+}
+
 .navbar {
   display: flex;
   padding: 16px;
