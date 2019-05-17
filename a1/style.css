@@ -19,3 +19,15 @@ body {
 .navbar-link {
   color: #ffffff;
 }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #f8f9fa;
+}
+
+.list-item {
+  background: #dee2e6;
+  margin-top: 5px;
+}
