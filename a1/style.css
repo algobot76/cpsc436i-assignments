@@ -30,4 +30,9 @@ body {
 .list-item {
   background: #868e96;
   margin-top: 5px;
+  display: flex;
+}
+
+.list-item__delete {
+  margin-left: auto;
 }
