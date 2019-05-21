@@ -35,4 +35,6 @@ body {
 
 .list-item__delete {
   margin-left: auto;
+  background: #ff0000;
+  color: #ffffff;
 }
