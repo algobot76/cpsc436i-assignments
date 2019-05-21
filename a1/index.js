@@ -4,27 +4,25 @@ var clearButton = document.getElementById("clear-btn");
 var myList = document.getElementById("my-list");
 var initialMessages = `[{"message":"item 1"},{"message":"item 2"}]`;
 
-var initialMessagesArray = JSON.parse(initialMessages);
-for (var i = 0; i < initialMessagesArray.length; i++) {
-  var listItem = document.createElement("li");
-  listItem.innerText = initialMessagesArray[i].message;
-  listItem.className = "list-item";
-  myList.appendChild(listItem);
+var messages = JSON.parse(initialMessages);
+for (var i = 0; i < messages.length; i++) {
+  addNewItem(messages[i].message);
 }
 
-function addNewItem() {
+function addNewItem(value) {
   var listItem = document.createElement("li");
-  listItem.innerText = itemInput.value;
+  listItem.innerText = value;
   listItem.className = "list-item ";
   myList.appendChild(listItem);
-  itemInput.value = "";
 }
 
-function clearList() {
-  while (myList.firstChild){
+addButton.addEventListener("click", function() {
+  addNewItem(itemInput.value);
+  itemInput.value = "";
+});
+
+clearButton.addEventListener("click", function() {
+  while (myList.firstChild) {
     myList.removeChild(myList.firstChild);
   }
-}
-
-addButton.addEventListener("click", addNewItem);
-clearButton.addEventListener("click", clearList);
+});
