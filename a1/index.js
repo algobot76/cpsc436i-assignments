@@ -11,8 +11,16 @@ for (var i = 0; i < messages.length; i++) {
 
 function addNewItem(value) {
   var listItem = document.createElement("li");
+  var deleteButton = document.createElement("button");
   listItem.innerText = value;
   listItem.className = "list-item ";
+  listItem.appendChild(deleteButton);
+  deleteButton.innerText = "Delete";
+  deleteButton.onclick = function() {
+    var listItem = this.parentNode;
+    var list = listItem.parentNode;
+    list.removeChild(listItem);
+  };
   myList.appendChild(listItem);
 }
 
