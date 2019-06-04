@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Clock.css';
 
 function Clock() {
   const [date, setDate] = useState(new Date());
@@ -17,7 +18,7 @@ function Clock() {
 
   return (
     <div>
-      <h2>It is {getTime(date)}</h2>
+      <h2 className="clock__text">It is {getTime(date)}</h2>
     </div>
   );
 }

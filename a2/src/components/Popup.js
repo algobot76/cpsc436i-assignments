@@ -7,7 +7,9 @@ const Popup = ({ onClick }) => (
   <div className="popup">
     <div className="popup-inner">
       <Clock />
-      <button onClick={onClick}>Close me</button>
+      <div className="close-me">
+        <button onClick={onClick}>Close me</button>
+      </div>
     </div>
   </div>
 );
