@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Clock from './Clock';
 import './Popup.css';
 
-const Popup = ({ onClick, text }) => (
+const Popup = ({ onClick }) => (
   <div className="popup">
     <div className="popup_inner">
-      <h1>{text}</h1>
+      <Clock />
       <button onClick={onClick}>Close me</button>
     </div>
   </div>
 );
 
 Popup.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default Popup;
