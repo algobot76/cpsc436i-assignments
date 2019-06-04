@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Popup from './Popup';
+import { connect } from 'react-redux';
+import { openPopup, closePopup } from '../actions';
 import PropTypes from 'prop-types';
 
-function Item({ onClick, completed, text }) {
-  const [showPopup, setShowPopup] = useState(false);
-  const openPopup = () => {
-    setShowPopup(true);
-  };
-  const closePopup = () => {
-    setShowPopup(false);
-  };
-
+function Item({
+  showPopup,
+  handleOpenPopup,
+  handleClosePopup,
+  onClick,
+  completed,
+  text
+}) {
   return (
     <div>
       <div>
@@ -24,14 +25,12 @@ function Item({ onClick, completed, text }) {
         <button type="button" onClick={onClick}>
           {completed ? 'restore' : 'delete'}
         </button>
-        <button type="button" onClick={openPopup}>
+        <button type="button" onClick={handleOpenPopup}>
           Popup
         </button>
       </div>
       <div>
-        {showPopup ? (
-          <Popup onClick={closePopup} text={text} />
-        ) : null}
+        {showPopup ? <Popup onClick={handleClosePopup} text={text} /> : null}
       </div>
     </div>
   );
@@ -44,4 +43,16 @@ Item.propTypes = {
   text: PropTypes.string.isRequired
 };
 
-export default Item;
+const mapStateToProps = state => ({
+  showPopup: state.showPopup
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleOpenPopup: () => dispatch(openPopup),
+  handleClosePopup: () => dispatch(closePopup)
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Item);
