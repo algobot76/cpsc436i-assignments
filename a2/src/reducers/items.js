@@ -1,4 +1,9 @@
-const items = (state = [], action) => {
+const defaultState = [
+  { id: 0, text: 'default item 1', completed: false },
+  { id: 1, text: 'default item 2', completed: false }
+];
+
+const items = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       return [
