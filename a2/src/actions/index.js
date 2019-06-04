@@ -1,4 +1,4 @@
-let nextItemId = 0;
+let nextItemId = 2;
 export const addItem = text => ({
   type: 'ADD_ITEM',
   id: nextItemId++,
