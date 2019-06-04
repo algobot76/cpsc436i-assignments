@@ -9,7 +9,7 @@ function Item({
   handleOpenPopup,
   handleClosePopup,
   onClick,
-  completed,
+  deleted,
   text
 }) {
   return (
@@ -17,28 +17,26 @@ function Item({
       <div>
         <li
           style={{
-            textDecoration: completed ? 'line-through' : 'none'
+            textDecoration: deleted ? 'line-through' : 'none'
           }}
         >
           {text}
         </li>
         <button type="button" onClick={onClick}>
-          {completed ? 'restore' : 'delete'}
+          {deleted ? 'restore' : 'delete'}
         </button>
         <button type="button" onClick={handleOpenPopup}>
           Popup
         </button>
       </div>
-      <div>
-        {showPopup ? <Popup onClick={handleClosePopup} text={text} /> : null}
-      </div>
+      <div>{showPopup ? <Popup onClick={handleClosePopup} /> : null}</div>
     </div>
   );
 }
 
 Item.propTypes = {
   onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
+  deleted: PropTypes.bool.isRequired,
   showPopup: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 };

@@ -7,10 +7,10 @@ const getVisibleItems = (items, filter) => {
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
       return items;
-    case VisibilityFilters.SHOW_COMPLETED:
-      return items.filter(t => t.completed);
+    case VisibilityFilters.SHOW_DELETED:
+      return items.filter(t => t.deleted);
     case VisibilityFilters.SHOW_ACTIVE:
-      return items.filter(t => !t.completed);
+      return items.filter(t => !t.deleted);
     default:
       throw new Error('Unknown filter: ' + filter);
   }

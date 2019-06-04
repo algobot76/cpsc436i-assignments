@@ -14,7 +14,7 @@ ItemList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      completed: PropTypes.bool.isRequired,
+      deleted: PropTypes.bool.isRequired,
       text: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,

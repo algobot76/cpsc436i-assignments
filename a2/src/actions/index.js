@@ -25,6 +25,6 @@ export const closePopup = {
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_DELETED: 'SHOW_DELETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 };

@@ -1,6 +1,6 @@
 const defaultState = [
-  { id: 0, text: 'default item 1', completed: false },
-  { id: 1, text: 'default item 2', completed: false }
+  { id: 0, text: 'default item 1', deleted: false },
+  { id: 1, text: 'default item 2', deleted: false }
 ];
 
 const items = (state = defaultState, action) => {
@@ -11,12 +11,12 @@ const items = (state = defaultState, action) => {
         {
           id: action.id,
           text: action.text,
-          completed: false
+          deleted: false
         }
       ];
     case 'TOGGLE_ITEM':
       return state.map(item =>
-        item.id === action.id ? { ...item, completed: !item.completed } : item
+        item.id === action.id ? { ...item, deleted: !item.deleted } : item
       );
     default:
       return state;
