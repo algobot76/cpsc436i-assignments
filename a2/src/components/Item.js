@@ -3,6 +3,7 @@ import Popup from './Popup';
 import { connect } from 'react-redux';
 import { openPopup, closePopup } from '../actions';
 import PropTypes from 'prop-types';
+import './Item.css';
 
 function Item({
   showPopup,
@@ -22,7 +23,11 @@ function Item({
         >
           {text}
         </li>
-        <button type="button" onClick={onClick}>
+        <button
+          className={deleted ? 'list-item__restore' : 'list-item__delete'}
+          type="button"
+          onClick={onClick}
+        >
           {deleted ? 'restore' : 'delete'}
         </button>
         <button type="button" onClick={handleOpenPopup}>

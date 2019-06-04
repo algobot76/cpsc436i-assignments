@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import './ItemList.css';
 
 const ItemList = ({ items, toggleItem }) => (
-  <ul>
+  <ul className="list">
     {items.map(item => (
-      <Item key={item.id} {...item} onClick={() => toggleItem(item.id)} />
+      <Item className="list-item" key={item.id} {...item} onClick={() => toggleItem(item.id)} />
     ))}
   </ul>
 );

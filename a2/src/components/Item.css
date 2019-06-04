@@ -1,0 +1,9 @@
+.list-item__delete {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+.list-item__restore {
+  background: #008000;
+  color: #000000;
+}
