@@ -5,7 +5,7 @@ import './Popup.css';
 
 const Popup = ({ onClick }) => (
   <div className="popup">
-    <div className="popup_inner">
+    <div className="popup-inner">
       <Clock />
       <button onClick={onClick}>Close me</button>
     </div>
