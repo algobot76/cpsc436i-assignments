@@ -1,49 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Popup from './Popup';
 import PropTypes from 'prop-types';
 
-class Item extends React.Component {
-  state = {
-    showPopup: false
+function Item({ onClick, completed, text }) {
+  const [showPopup, setShowPopup] = useState(false);
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
-  closePopup = () => {
-    this.setState({
-      showPopup: false
-    });
-  };
-
-  openPopup = () => {
-    console.log('fuck');
-    this.setState({
-      showPopup: true
-    });
-  };
-
-  render() {
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          <li
-            style={{
-              textDecoration: this.props.completed ? 'line-through' : 'none'
-            }}
-          >
-            {this.props.text}
-          </li>
-          <button type="button" onClick={this.props.onClick}>
-            {this.props.completed ? 'restore' : 'delete'}
-          </button>
-          <button type="button" onClick={this.openPopup}>Popup</button>
-        </div>
-        <div>
-          {this.state.showPopup ? (
-            <Popup onClick={this.closePopup} text={this.props.text} />
-          ) : null}
-        </div>
+        <li
+          style={{
+            textDecoration: completed ? 'line-through' : 'none'
+          }}
+        >
+          {text}
+        </li>
+        <button type="button" onClick={onClick}>
+          {completed ? 'restore' : 'delete'}
+        </button>
+        <button type="button" onClick={openPopup}>
+          Popup
+        </button>
       </div>
-    );
-  }
+      <div>
+        {showPopup ? (
+          <Popup onClick={closePopup} text={text} />
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 Item.propTypes = {
