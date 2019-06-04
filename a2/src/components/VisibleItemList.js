@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleItem } from '../actions';
-import ItemList from '../components/ItemList';
+import ItemList from './ItemList';
 import { VisibilityFilters } from '../actions';
 
 const getVisibleItems = (items, filter) => {
