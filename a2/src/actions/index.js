@@ -15,8 +15,16 @@ export const toggleItem = id => ({
   id
 });
 
+export const openPopup = {
+  type: 'OPEN_POPUP'
+};
+
+export const closePopup = {
+  type: 'CLOSE_POPUP'
+};
+
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_DELETED: 'SHOW_DELETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 };
