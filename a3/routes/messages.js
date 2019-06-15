@@ -14,4 +14,9 @@ router.get('/', function(req, res, next) {
   res.json(db.getAll());
 });
 
+router.post('/add', function(req, res, next) {
+  const message = {msg: req.body.msg};
+  db.add(message);
+});
+
 module.exports = router;
