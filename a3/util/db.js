@@ -64,3 +64,5 @@ class Database {
     return -1;
   }
 }
+
+module.exports = Database;
