@@ -25,4 +25,13 @@ router.post('/add', function(req, res, next) {
   }
 });
 
+router.delete('/clear-all', function(req, res, next) {
+  db.clearAll();
+  if (db.getAll().length === 0) {
+    res.status(200).send('DB has bean cleared.');
+  } else {
+    res.status(400).send('Failed to clear DB!')
+  }
+});
+
 module.exports = router;
