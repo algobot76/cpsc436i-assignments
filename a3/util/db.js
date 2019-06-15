@@ -28,6 +28,9 @@ class Database {
     const idx = this._search(id);
     if (idx !== -1) {
       this._db.splice(idx, 1);
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -60,7 +63,7 @@ class Database {
       let mid = (start + end) / 2;
       if (this._db[mid].id === id) {
         return mid;
-      } else if (this._db[mid].id < mid) {
+      } else if (this._db[mid].id < id) {
         start = mid;
       } else {
         end = mid;
