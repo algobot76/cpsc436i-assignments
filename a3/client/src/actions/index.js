@@ -1,30 +1,36 @@
-let nextItemId = 2;
-export const addItem = text => ({
-  type: 'ADD_ITEM',
-  id: nextItemId++,
-  text
+import axios from 'axios';
+
+const a3 = axios.create({
+  baseURL: 'localhost:5000'
 });
 
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
+function getMessages() {
+  return a3
+    .get('/messages')
+    .then(messages => messages)
+    .catch(err => err);
+}
+
+export function fetchMessages() {
+  return dispatch => {
+    dispatch(fetchMessagesBegin());
+    return getMessages()
+      .then(res => dispatch(fetchMessagesSuccess(res)))
+      .catch(err => dispatch(fetchMessagesFailure(err)));
+  };
+}
+
+export const fetchMessagesBegin = () => ({
+  type: 'FETCH_MESSAGES_BEGIN'
 });
 
-export const toggleItem = id => ({
-  type: 'TOGGLE_ITEM',
-  id
+export const fetchMessagesSuccess = messages => ({
+  type: 'FETCH_MESSAGES_SUCCESS',
+  payload: { messages }
 });
 
-export const openPopup = {
-  type: 'OPEN_POPUP'
-};
+export const fetchMessagesFailure = error => ({
+  type: 'FETCH_MESSAGES_FAILURE',
+  payload: { error }
+});
 
-export const closePopup = {
-  type: 'CLOSE_POPUP'
-};
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_DELETED: 'SHOW_DELETED',
-  SHOW_ACTIVE: 'SHOW_ACTIVE'
-};

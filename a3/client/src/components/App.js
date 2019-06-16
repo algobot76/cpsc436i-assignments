@@ -1,13 +1,9 @@
 import React from 'react';
-import Footer from './Footer';
-import AddItem from './AddItem';
-import VisibleItemList from './VisibleItemList';
+import MessageList from './MessageList';
 
 const App = () => (
   <div>
-    <AddItem />
-    <VisibleItemList />
-    <Footer />
+    <MessageList />
   </div>
 );
 
