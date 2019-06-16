@@ -1,27 +1,22 @@
-function getMessages() {
-  return fetch('http://localhost:5000/messages', {
-    mode: 'no-cors'
-  })
-    .then(handleErrors)
-    .then(res => {
-      return res.json();
-  });
-}
+import axios from 'axios';
 
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
+const a3 = axios.create({
+  baseURL: 'http://localhost:5000/'
+});
+
+function getMessages() {
+  return a3
+    .get('/messages')
+    .then(res => res)
+    .catch(err => err);
 }
 
 export function fetchMessages() {
   return dispatch => {
     dispatch(fetchMessagesBegin());
     return getMessages()
-      .then(json => {
-        dispatch(fetchMessagesSuccess(json.messages));
-        return json.messages;
+      .then(res => {
+        dispatch(fetchMessagesSuccess(res.data));
       })
       .catch(error => fetchMessagesFailure(error));
   };
