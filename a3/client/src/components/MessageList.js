@@ -11,9 +11,14 @@ class MessageList extends Component {
   }
 
   render() {
-    const { messages } = this.props;
-    console.log(messages);
-
+    const { messages, error, loading } = this.props;
+    console.log(messages)
+    if (error) {
+      return <div>Error! {error.message}</div>;
+    }
+    if (loading) {
+      return <div>Loading....</div>;
+    }
     return (
       <ul>
         {messages.map(message => (
@@ -25,9 +30,9 @@ class MessageList extends Component {
 }
 
 const mapSateToProps = state => ({
-  messages: state.messages,
-  loading: state.loading,
-  errno: state.error
+  messages: state.messages.items,
+  loading: state.messages.loading,
+  errno: state.messages.error
 });
 
 export default connect(mapSateToProps)(MessageList);
