@@ -15,9 +15,7 @@ export function fetchMessages() {
   return dispatch => {
     dispatch(fetchMessagesBegin());
     return getMessages()
-      .then(res => {
-        dispatch(fetchMessagesSuccess(res.data));
-      })
+      .then(res => dispatch(fetchMessagesSuccess(res.data)))
       .catch(error => fetchMessagesFailure(error));
   };
 }
@@ -51,7 +49,7 @@ function addMessage(message) {
   return dispatch => {
     dispatch(addMessageBegin(message));
     return postMessage(message)
-      .then(res => dispatch(addMessageSuccess()))
+      .then(() => dispatch(addMessageSuccess()))
       .catch(err => dispatch(addMessageFailure(err)));
   };
 }
