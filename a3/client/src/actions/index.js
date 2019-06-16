@@ -39,3 +39,37 @@ export const fetchMessagesFailure = error => ({
   type: FETCH_MESSAGES_FAILURE,
   payload: { error }
 });
+
+function postMessage(message) {
+  return a3
+    .post('/messages/add', { msg: message })
+    .then(res => res)
+    .catch(err => err);
+}
+
+function addMessage(message) {
+  return dispatch => {
+    dispatch(addMessageBegin(message));
+    return postMessage(message)
+      .then(res => dispatch(addMessageSuccess()))
+      .catch(err => dispatch(addMessageFailure(err)));
+  };
+}
+
+export const ADD_MESSAGE_BEGIN = 'ADD_MESSAGE_BEGIN';
+export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
+export const ADD_MESSAGE_FAILURE = 'ADD_MESSAGE_FAILURE';
+
+export const addMessageBegin = message => ({
+  type: ADD_MESSAGE_BEGIN,
+  payload: { message }
+});
+
+export const addMessageSuccess = () => ({
+  type: ADD_MESSAGE_SUCCESS
+});
+
+export const addMessageFailure = error => ({
+  type: ADD_MESSAGE_FAILURE,
+  payload: { error }
+});
