@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import Message from './Message';
 import { fetchMessages } from '../actions';
 
-import './MessageList.css';
-
 class MessageList extends Component {
   componentDidMount() {
     this.props.dispatch(fetchMessages());
