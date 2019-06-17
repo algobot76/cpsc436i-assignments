@@ -22,6 +22,7 @@ class Database {
     };
     this._id++;
     this._db.push(obj);
+    return obj;
   }
 
   delete(id) {

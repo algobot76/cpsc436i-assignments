@@ -18,8 +18,8 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res, next) {
   const msg = req.body.msg;
   if (!isEmpty(msg)) {
-    db.add({msg});
-    return res.status(200).send(`Message: ${msg} has been added to DB.`);
+    const m = db.add({msg});
+    return res.status(200).json(m);
   } else {
     return res.status(400).send('Something went wrong!!!');
   }
