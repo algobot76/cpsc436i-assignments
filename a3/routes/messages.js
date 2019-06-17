@@ -4,9 +4,9 @@ const isEmpty = require('lodash.isempty');
 const Database = require('../util/db');
 
 const messages = [
-  {msg: 'message 1'},
-  {msg: 'message 2'},
-  {msg: 'message 3'},
+  { msg: 'message 1' },
+  { msg: 'message 2' },
+  { msg: 'message 3' }
 ];
 
 const db = new Database(messages);
@@ -18,14 +18,14 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res, next) {
   const msg = req.body.msg;
   if (!isEmpty(msg)) {
-    const m = db.add({msg});
+    const m = db.add({ msg });
     return res.status(200).json(m);
   } else {
     return res.status(400).send('Something went wrong!!!');
   }
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete('/remove/:id', function(req, res, next) {
   const id = parseInt(req.params.id);
   if (db.delete(id)) {
     res.status(200).send('Message has been removed.');

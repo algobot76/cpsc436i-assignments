@@ -1,4 +1,8 @@
-import { getMessages, postMessage } from '../api/messageService';
+import {
+  getMessages,
+  postMessage,
+  deleteAllMessages
+} from '../api/messageService';
 
 export function fetchMessages() {
   return dispatch => {
@@ -51,5 +55,31 @@ export const addMessageSuccess = message => ({
 
 export const addMessageFailure = error => ({
   type: ADD_MESSAGE_FAILURE,
+  payload: { error }
+});
+
+export const clearAllMessages = () => {
+  return dispatch => {
+    dispatch(clearAllMessagesBegin());
+    return deleteAllMessages()
+      .then(() => dispatch(clearAllMessagesSuccess()))
+      .catch(err => dispatch(clearAllMessagesFailure(err)));
+  };
+};
+
+export const CLEAR_ALL_MESSAGES_BEGIN = 'CLEAR_ALL_MESSAGES_BEGIN ';
+export const CLEAR_ALL_MESSAGES_SUCCESS = 'CLEAR_ALL_MESSAGES_SUCCESS ';
+export const CLEAR_ALL_MESSAGES_FAILURE = 'CLEAR_ALL_MESSAGES_FAILURE';
+
+export const clearAllMessagesBegin = () => ({
+  type: CLEAR_ALL_MESSAGES_BEGIN
+});
+
+export const clearAllMessagesSuccess = () => ({
+  type: CLEAR_ALL_MESSAGES_SUCCESS
+});
+
+export const clearAllMessagesFailure = error => ({
+  type: CLEAR_ALL_MESSAGES_FAILURE,
   payload: { error }
 });

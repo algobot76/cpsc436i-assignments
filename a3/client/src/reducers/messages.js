@@ -4,7 +4,10 @@ import {
   FETCH_MESSAGES_FAILURE,
   ADD_MESSAGE_BEGIN,
   ADD_MESSAGE_SUCCESS,
-  ADD_MESSAGE_FAILURE
+  ADD_MESSAGE_FAILURE,
+  CLEAR_ALL_MESSAGES_BEGIN,
+  CLEAR_ALL_MESSAGES_SUCCESS,
+  CLEAR_ALL_MESSAGES_FAILURE
 } from '../actions';
 
 const initialState = {
@@ -48,6 +51,25 @@ export default function messages(state = initialState, action) {
     case ADD_MESSAGE_FAILURE:
       return {
         ...state,
+        error: action.payload.error
+      };
+    case CLEAR_ALL_MESSAGES_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case CLEAR_ALL_MESSAGES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        items: []
+      };
+    case CLEAR_ALL_MESSAGES_FAILURE:
+      return {
+        ...state,
+        loading: false,
         error: action.payload.error
       };
     default:

@@ -17,3 +17,10 @@ export const postMessage = message => {
     .then(res => res)
     .catch(err => err);
 };
+
+export const deleteAllMessages = () => {
+  return messageApi
+    .delete('/messages/clear-all')
+    .then(res => res)
+    .catch(err => err);
+};
