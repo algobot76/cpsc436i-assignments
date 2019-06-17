@@ -10,7 +10,7 @@ const initialState = {
   error: null
 };
 
-export default function messageReducer(state = initialState, action) {
+export default function messages(state = initialState, action) {
   switch (action.type) {
     case FETCH_MESSAGES_BEGIN:
       return {
