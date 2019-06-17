@@ -31,7 +31,7 @@ export const addMessage = message => {
   return dispatch => {
     dispatch(addMessageBegin());
     return postMessage(message)
-      .then(() => dispatch(addMessageSuccess(message)))
+      .then(res => dispatch(addMessageSuccess(res.data)))
       .catch(err => dispatch(addMessageFailure(err)));
   };
 };
