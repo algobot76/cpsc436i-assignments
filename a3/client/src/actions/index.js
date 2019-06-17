@@ -1,4 +1,4 @@
-import {getMessages, postMessage} from '../api/messageService';
+import { getMessages, postMessage } from '../api/messageService';
 
 export function fetchMessages() {
   return dispatch => {
