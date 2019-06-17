@@ -27,26 +27,26 @@ export const fetchMessagesFailure = error => ({
   payload: { error }
 });
 
-function addMessage(message) {
+export const addMessage = message => {
   return dispatch => {
-    dispatch(addMessageBegin(message));
+    dispatch(addMessageBegin());
     return postMessage(message)
-      .then(() => dispatch(addMessageSuccess()))
+      .then(() => dispatch(addMessageSuccess(message)))
       .catch(err => dispatch(addMessageFailure(err)));
   };
-}
+};
 
 export const ADD_MESSAGE_BEGIN = 'ADD_MESSAGE_BEGIN';
 export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
 export const ADD_MESSAGE_FAILURE = 'ADD_MESSAGE_FAILURE';
 
-export const addMessageBegin = message => ({
-  type: ADD_MESSAGE_BEGIN,
-  payload: { message }
+export const addMessageBegin = () => ({
+  type: ADD_MESSAGE_BEGIN
 });
 
-export const addMessageSuccess = () => ({
-  type: ADD_MESSAGE_SUCCESS
+export const addMessageSuccess = message => ({
+  type: ADD_MESSAGE_SUCCESS,
+  payload: { message }
 });
 
 export const addMessageFailure = error => ({
