@@ -1,15 +1,4 @@
-import axios from 'axios';
-
-const a3 = axios.create({
-  baseURL: 'http://localhost:5000/'
-});
-
-function getMessages() {
-  return a3
-    .get('/messages')
-    .then(res => res)
-    .catch(err => err);
-}
+import {getMessages, postMessage} from '../api/messageService';
 
 export function fetchMessages() {
   return dispatch => {
@@ -37,13 +26,6 @@ export const fetchMessagesFailure = error => ({
   type: FETCH_MESSAGES_FAILURE,
   payload: { error }
 });
-
-function postMessage(message) {
-  return a3
-    .post('/messages/add', { msg: message })
-    .then(res => res)
-    .catch(err => err);
-}
 
 function addMessage(message) {
   return dispatch => {
