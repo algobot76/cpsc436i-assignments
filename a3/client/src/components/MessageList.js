@@ -29,7 +29,7 @@ class MessageList extends Component {
 const mapSateToProps = state => ({
   messages: state.messages.items,
   loading: state.messages.loading,
-  errno: state.messages.error
+  error: state.messages.error
 });
 
 export default connect(mapSateToProps)(MessageList);

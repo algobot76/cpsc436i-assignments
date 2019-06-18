@@ -5,29 +5,17 @@ const messageApi = axios.create({
 });
 
 export const getMessages = () => {
-  return messageApi
-    .get('/')
-    .then(res => res)
-    .catch(err => err);
+  return messageApi.get('/');
 };
 
 export const postMessage = message => {
-  return messageApi
-    .post('/new', { msg: message })
-    .then(res => res)
-    .catch(err => err);
+  return messageApi.post('/new', { msg: message });
 };
 
 export const deleteMessage = id => {
-  return messageApi
-    .delete(`/remove/${id}`)
-    .then(res => res)
-    .catch(err => err);
+  return messageApi.delete(`/remove/${id}`);
 };
 
 export const deleteAllMessages = () => {
-  return messageApi
-    .delete('/destroy')
-    .then(res => res)
-    .catch(err => err);
+  return messageApi.delete('/destroy');
 };

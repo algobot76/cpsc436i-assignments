@@ -10,7 +10,7 @@ export function fetchMessages() {
     dispatch(fetchMessagesBegin());
     return getMessages()
       .then(res => dispatch(fetchMessagesSuccess(res.data)))
-      .catch(err => dispatch(fetchMessagesFailure(err)));
+      .catch(err => dispatch(fetchMessagesFailure(err.response.data)));
   };
 }
 
@@ -37,7 +37,7 @@ export const addMessage = message => {
     dispatch(addMessageBegin());
     return postMessage(message)
       .then(res => dispatch(addMessageSuccess(res.data)))
-      .catch(err => dispatch(addMessageFailure(err)));
+      .catch(err => dispatch(addMessageFailure(err.response.data)));
   };
 };
 
@@ -64,7 +64,7 @@ export const removeMessage = id => {
     dispatch(removeMessageBegin());
     return deleteMessage(id)
       .then(res => dispatch(removeMessageSuccess(res.data)))
-      .catch(err => dispatch(removeMessageFailure(err)));
+      .catch(err => dispatch(removeMessageFailure(err.response.data)));
   };
 };
 
@@ -91,7 +91,7 @@ export const clearAllMessages = () => {
     dispatch(clearAllMessagesBegin());
     return deleteAllMessages()
       .then(() => dispatch(clearAllMessagesSuccess()))
-      .catch(err => dispatch(clearAllMessagesFailure(err)));
+      .catch(err => dispatch(clearAllMessagesFailure(err.response.data)));
   };
 };
 
