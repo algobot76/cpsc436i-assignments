@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
   res.json(db.getAll());
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/new', function(req, res, next) {
   const msg = req.body.msg;
   if (!isEmpty(msg)) {
     const m = db.add({ msg });
@@ -34,7 +34,7 @@ router.delete('/remove/:id', function(req, res, next) {
   }
 });
 
-router.delete('/clear-all', function(req, res, next) {
+router.delete('/destroy', function(req, res, next) {
   db.clearAll();
   if (db.getAll().length === 0) {
     res.status(200).send('DB has bean cleared.');

@@ -1,26 +1,26 @@
 import axios from 'axios';
 
 const messageApi = axios.create({
-  baseURL: 'http://localhost:5000/'
+  baseURL: 'http://localhost:5000/messages/'
 });
 
 export const getMessages = () => {
   return messageApi
-    .get('/messages')
+    .get('/')
     .then(res => res)
     .catch(err => err);
 };
 
 export const postMessage = message => {
   return messageApi
-    .post('/messages/add', { msg: message })
+    .post('/new', { msg: message })
     .then(res => res)
     .catch(err => err);
 };
 
 export const deleteAllMessages = () => {
   return messageApi
-    .delete('/messages/clear-all')
+    .delete('/destroy')
     .then(res => res)
     .catch(err => err);
 };
