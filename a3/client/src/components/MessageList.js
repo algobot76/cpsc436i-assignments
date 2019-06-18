@@ -11,7 +11,7 @@ class MessageList extends Component {
   render() {
     const { messages, error, loading } = this.props;
     if (error) {
-      return <div>Error! {error.message}</div>;
+      return <div>Error: {error}</div>;
     }
     if (loading) {
       return <div>Loading....</div>;
