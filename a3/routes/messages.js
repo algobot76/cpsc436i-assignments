@@ -21,7 +21,7 @@ router.post('/new', function(req, res, next) {
     const m = db.add({ msg });
     return res.status(200).json(m);
   } else {
-    return res.status(400).send('Something went wrong!!!');
+    return res.status(400).json({ error: 'Something went wrong!!!' });
   }
 });
 
@@ -30,16 +30,16 @@ router.delete('/remove/:id', function(req, res, next) {
   if (db.delete(id)) {
     res.status(200).json(id);
   } else {
-    res.status(500).send('Failed to remove the message!');
+    res.status(500).json({ error: 'Failed to remove the message!' });
   }
 });
 
 router.delete('/destroy', function(req, res, next) {
   db.clearAll();
   if (db.getAll().length === 0) {
-    res.status(200).send('DB has bean cleared.');
+    res.sendStatus(200);
   } else {
-    res.status(400).send('Failed to clear DB!');
+    res.status(400).json({ error: 'Failed to clear DB!' });
   }
 });
 
