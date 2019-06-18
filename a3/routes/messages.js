@@ -28,7 +28,7 @@ router.post('/new', function(req, res, next) {
 router.delete('/remove/:id', function(req, res, next) {
   const id = parseInt(req.params.id);
   if (db.delete(id)) {
-    res.status(200).send('Message has been removed.');
+    res.status(200).json(id);
   } else {
     res.status(500).send('Failed to remove the message!');
   }

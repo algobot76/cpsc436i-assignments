@@ -19,7 +19,7 @@ class MessageList extends Component {
     return (
       <ul>
         {messages.map(message => (
-          <Message key={message.id} msg={message.data.msg} />
+          <Message key={message.id} id={message.id} msg={message.data.msg} />
         ))}
       </ul>
     );

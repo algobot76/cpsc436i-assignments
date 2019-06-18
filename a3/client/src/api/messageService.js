@@ -18,6 +18,13 @@ export const postMessage = message => {
     .catch(err => err);
 };
 
+export const deleteMessage = id => {
+  return messageApi
+    .delete(`/remove/${id}`)
+    .then(res => res)
+    .catch(err => err);
+};
+
 export const deleteAllMessages = () => {
   return messageApi
     .delete('/destroy')

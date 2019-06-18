@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removeMessage } from '../actions';
 
-function Message({ msg }) {
-  return <li>{msg}</li>;
-}
+const Message = ({ id, msg, dispatch }) => {
+  return (
+    <li key={id} onClick={() => dispatch(removeMessage(id))}>
+      {msg}
+    </li>
+  );
+};
 
 Message.propTypes = {
+  id: PropTypes.number,
   msg: PropTypes.string.isRequired
 };
 
-export default Message;
+export default connect()(Message);
