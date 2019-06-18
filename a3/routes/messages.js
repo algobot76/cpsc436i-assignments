@@ -11,7 +11,7 @@ const messages = [
 
 const db = new Database(messages);
 
-router.get('/', function(req, res, next) {
+router.get('/all', function(req, res, next) {
   res.json(db.getAll());
 });
 

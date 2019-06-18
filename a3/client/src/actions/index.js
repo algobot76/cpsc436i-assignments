@@ -8,7 +8,7 @@ export function fetchMessages() {
   return dispatch => {
     dispatch(fetchMessagesBegin());
     return messageApi
-      .get('/')
+      .get('/all')
       .then(res => dispatch(fetchMessagesSuccess(res.data)))
       .catch(err => dispatch(fetchMessagesFailure(err.response.data)));
   };
