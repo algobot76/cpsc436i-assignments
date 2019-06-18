@@ -10,7 +10,7 @@ export function fetchMessages() {
     dispatch(fetchMessagesBegin());
     return getMessages()
       .then(res => dispatch(fetchMessagesSuccess(res.data)))
-      .catch(error => fetchMessagesFailure(error));
+      .catch(err => dispatch(fetchMessagesFailure(err)));
   };
 }
 
