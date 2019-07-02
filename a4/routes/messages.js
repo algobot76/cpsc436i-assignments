@@ -10,14 +10,18 @@ const messages = [
   { msg: 'message 3' }
 ];
 
-messages.forEach(message => {
-  const newMessage = new Message({
-    msg: message.msg
-  });
-  newMessage
-    .save()
-    .then(() => console.log(`${message.msg} has been added to MongoDB.`));
-});
+Message.deleteMany({})
+  .then(() => {
+    messages.forEach(message => {
+      const newMessage = new Message({
+        msg: message.msg
+      });
+      newMessage
+        .save()
+        .then(() => console.log(`${message.msg} has been added to MongoDB.`));
+    });
+  })
+  .catch(err => console.log(err));
 
 router.get('/all', function(req, res, next) {
   res.json(db.getAll());
