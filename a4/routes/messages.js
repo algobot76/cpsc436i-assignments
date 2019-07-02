@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const isEmpty = require('lodash.isempty');
-const Database = require('../util/db');
 
 const Message = require('../models/Message');
 
@@ -19,8 +18,6 @@ messages.forEach(message => {
     .save()
     .then(() => console.log(`${message.msg} has been added to MongoDB.`));
 });
-
-const db = new Database(messages);
 
 router.get('/all', function(req, res, next) {
   res.json(db.getAll());
