@@ -3,11 +3,22 @@ const router = express.Router();
 const isEmpty = require('lodash.isempty');
 const Database = require('../util/db');
 
+const Message = require('../models/Message');
+
 const messages = [
   { msg: 'message 1' },
   { msg: 'message 2' },
   { msg: 'message 3' }
 ];
+
+messages.forEach(message => {
+  const newMessage = new Message({
+    msg: message.msg
+  });
+  newMessage
+    .save()
+    .then(() => console.log(`${message.msg} has been added to MongoDB.`));
+});
 
 const db = new Database(messages);
 
