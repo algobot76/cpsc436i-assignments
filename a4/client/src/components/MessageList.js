@@ -10,7 +10,7 @@ function MessageList() {
   const error = useSelector(state => state.messages.error);
   useEffect(() => {
     dispatch(fetchMessages());
-  }, []);
+  }, [dispatch]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -22,8 +22,8 @@ function MessageList() {
 
   return (
     <ul>
-      {messages.map(message => (
-        <Message key={message.id} id={message.id} msg={message.data.msg} />
+      {messages.map((message, idx) => (
+        <Message key={idx} id={message._id} msg={message.msg} />
       ))}
     </ul>
   );
